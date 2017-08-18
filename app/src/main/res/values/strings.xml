@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">BookWishlist</string>
+    <string name="wishlists">Wishlists</string>
+    <string name="users">Users</string>
+    <string name="viewallbooks">View All Books</string>
+    <string name="allbooks">All Books</string>
+    <string name="books">Books</string>
+    <string name="home">Home</string>
+    <string name="book">Book</string>
+    <string name="bookinformation">Book Information</string>
+    <string name="title"><b>Title:</b> %s</string>
+    <string name="author"><b>Author:</b> %s</string>
+    <string name="summary"><b>Summary:</b> %s"</string>
+    <string name="isbn"><b>ISBN:</b> %s</string>
+    <string name="dateofpublication"><b>Date of Publication:</b> %s</string>
+</resources>
