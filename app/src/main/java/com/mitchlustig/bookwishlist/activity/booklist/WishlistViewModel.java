@@ -53,6 +53,7 @@ public class WishlistViewModel extends ViewModel {
                         @Override
                         public void onResponse(Call<List<Book>> call, Response<List<Book>> response) {
                             allBooks = response.body();
+                            //O(NxM) on ui thread? lol
                             List<Integer> usersWishes = wishes.stream().filter(item -> item.getUserId() == userId).map(item -> item.getBookId()).collect(Collectors.toList());
                             books.postValue(allBooks.stream().filter(item -> usersWishes.contains(item.getId())).collect(Collectors.toList()));
                         }

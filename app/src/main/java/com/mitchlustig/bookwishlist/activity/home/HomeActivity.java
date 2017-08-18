@@ -1,4 +1,4 @@
-package com.mitchlustig.bookwishlist.activity;
+package com.mitchlustig.bookwishlist.activity.home;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.mitchlustig.bookwishlist.BR;
 import com.mitchlustig.bookwishlist.R;
+import com.mitchlustig.bookwishlist.activity.BaseActivity;
 import com.mitchlustig.bookwishlist.databinding.ActivityHomeBinding;
 import com.mitchlustig.bookwishlist.service.Model.User;
 

@@ -8,9 +8,9 @@
     <string name="home">Home</string>
     <string name="book">Book</string>
     <string name="bookinformation">Book Information</string>
-    <string name="title"><b>Title:</b> %s</string>
-    <string name="author"><b>Author:</b> %s</string>
-    <string name="summary"><b>Summary:</b> %s"</string>
-    <string name="isbn"><b>ISBN:</b> %s</string>
-    <string name="dateofpublication"><b>Date of Publication:</b> %s</string>
+    <string name="title">Title: </string>
+    <string name="author">Author: </string>
+    <string name="summary">Summary: "</string>
+    <string name="isbn">ISBN: </string>
+    <string name="dateofpublication">Date of Publication: </string>
 </resources>

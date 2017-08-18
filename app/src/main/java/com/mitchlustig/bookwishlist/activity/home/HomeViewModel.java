@@ -1,4 +1,4 @@
-package com.mitchlustig.bookwishlist.activity;
+package com.mitchlustig.bookwishlist.activity.home;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;

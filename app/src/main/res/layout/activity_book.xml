@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
+        <import type="com.mitchlustig.bookwishlist.Router" />
+        <variable name="viewmodel" type="com.mitchlustig.bookwishlist.activity.book.BookViewModel"/>
         <variable name="book" type="com.mitchlustig.bookwishlist.service.Model.Book"/>
     </data>
     <LinearLayout
@@ -51,7 +53,7 @@
                     android:paddingRight="80sp"
                     android:paddingTop="20sp"
                     android:paddingBottom="20sp"
-                    android:text="@{String.format(@string/title, book.getTitle())}"/>
+                    android:text='@{viewmodel.getTitle()}'/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -62,7 +64,7 @@
                     android:paddingRight="80sp"
                     android:paddingTop="20sp"
                     android:paddingBottom="20sp"
-                    android:text="@{String.format(@string/author, book.getAuthor())}"/>
+                    android:text="@{viewmodel.getAuthor()}"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -73,7 +75,7 @@
                     android:paddingRight="80sp"
                     android:paddingTop="20sp"
                     android:paddingBottom="20sp"
-                    android:text="@{String.format(@string/isbn, book.getIsbn())}"/>
+                    android:text="@{viewmodel.getIsbn()}"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -84,7 +86,7 @@
                     android:paddingRight="80sp"
                     android:paddingTop="20sp"
                     android:paddingBottom="20sp"
-                    android:text="@{String.format(@string/dateofpublication, book.getPublicationDate())}"/>
+                    android:text="@{viewmodel.getDate()}"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -95,7 +97,7 @@
                     android:paddingRight="80sp"
                     android:paddingTop="20sp"
                     android:paddingBottom="20sp"
-                    android:text="@{String.format(@string/summary, book.getSummary())}"/>
+                    android:text="@{viewmodel.getSummary()}"/>
 
             </LinearLayout>
         </ScrollView>
@@ -103,12 +105,12 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/cyan"
+            android:background="@color/teal"
             android:text="@string/home"
             android:padding="20dp"
             android:layout_margin="20dp"
             android:textSize="20sp"
             android:layout_gravity="right"
-            android:onClick="home"/>
+            android:onClick="@{v -> Router.home(v.getContext())}"/>
     </LinearLayout>
 </layout>

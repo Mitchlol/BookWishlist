@@ -2,13 +2,12 @@ package com.mitchlustig.bookwishlist.activity.booklist;
 
 import android.content.Context;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 import com.mitchlustig.bookwishlist.R;
-import com.mitchlustig.bookwishlist.Router;
 import com.mitchlustig.bookwishlist.activity.BaseActivity;
 import com.mitchlustig.bookwishlist.service.Model.Book;
 
@@ -27,7 +26,7 @@ public class BooksActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_booklist);
+        DataBindingUtil.setContentView(this, R.layout.activity_booklist);
         ButterKnife.bind(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         getService().books().enqueue(new Callback<List<Book>>() {
@@ -41,10 +40,6 @@ public class BooksActivity extends BaseActivity {
 
             }
         });
-    }
-
-    public void home(View v) {
-        Router.home(this);
     }
 
     public static Intent getIntent(Context context){

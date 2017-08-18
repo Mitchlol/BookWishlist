@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:name=".BWApp">
-        <activity android:name=".activity.HomeActivity"
+        <activity android:name=".activity.home.HomeActivity"
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,7 +20,7 @@
         </activity>
         <activity android:name=".activity.booklist.BooksActivity"
             android:screenOrientation="landscape"/>
-        <activity android:name=".activity.BookActivity"
+        <activity android:name=".activity.book.BookActivity"
             android:screenOrientation="landscape"/>
         <activity android:name=".activity.booklist.WishlistActivity"
             android:screenOrientation="landscape"/>

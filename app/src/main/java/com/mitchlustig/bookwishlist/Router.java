@@ -2,8 +2,8 @@ package com.mitchlustig.bookwishlist;
 
 import android.content.Context;
 
-import com.mitchlustig.bookwishlist.activity.BookActivity;
-import com.mitchlustig.bookwishlist.activity.HomeActivity;
+import com.mitchlustig.bookwishlist.activity.book.BookActivity;
+import com.mitchlustig.bookwishlist.activity.home.HomeActivity;
 import com.mitchlustig.bookwishlist.activity.booklist.BooksActivity;
 import com.mitchlustig.bookwishlist.activity.booklist.WishlistActivity;
 
