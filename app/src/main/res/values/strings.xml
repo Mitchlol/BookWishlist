@@ -13,4 +13,9 @@
     <string name="summary">Summary: "</string>
     <string name="isbn">ISBN: </string>
     <string name="dateofpublication">Date of Publication: </string>
+
+    <string name="adduser">Add User</string>
+    <string name="firstname">First Name</string>
+    <string name="lastname">Last Name</string>
+    <string name="email">Email</string>
 </resources>
