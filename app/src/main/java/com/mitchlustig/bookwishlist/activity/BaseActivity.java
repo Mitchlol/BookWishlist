@@ -1,13 +1,13 @@
 package com.mitchlustig.bookwishlist.activity;
 
+import android.arch.lifecycle.LifecycleActivity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 
 import com.mitchlustig.bookwishlist.BWApp;
 import com.mitchlustig.bookwishlist.service.WishlistService;
 
-public class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends LifecycleActivity {
     private WishlistService service;
 
     @Override

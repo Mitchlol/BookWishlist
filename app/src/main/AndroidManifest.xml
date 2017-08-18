@@ -22,6 +22,8 @@
             android:screenOrientation="landscape"/>
         <activity android:name=".activity.BookActivity"
             android:screenOrientation="landscape"/>
+        <activity android:name=".activity.booklist.WishlistActivity"
+            android:screenOrientation="landscape"/>
     </application>
 
 </manifest>

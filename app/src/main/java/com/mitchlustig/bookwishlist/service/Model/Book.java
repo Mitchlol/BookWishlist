@@ -1,10 +1,6 @@
 package com.mitchlustig.bookwishlist.service.Model;
 
-import android.content.Intent;
-import android.view.View;
-
 import com.google.gson.annotations.SerializedName;
-import com.mitchlustig.bookwishlist.activity.BookActivity;
 
 public class Book {
     @SerializedName("id")
@@ -47,11 +43,6 @@ public class Book {
 
     public String getSummary() {
         return summary;
-    }
-
-    public void showBookDetails(View v){
-        Intent intent = new Intent(v.getContext(), BookActivity.class);
-        v.getContext().startActivity(intent);
     }
 
     @Override

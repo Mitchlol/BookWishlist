@@ -1,5 +1,6 @@
 package com.mitchlustig.bookwishlist.activity;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -8,56 +9,56 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import com.mitchlustig.bookwishlist.BR;
 import com.mitchlustig.bookwishlist.R;
-import com.mitchlustig.bookwishlist.Router;
+import com.mitchlustig.bookwishlist.databinding.ActivityHomeBinding;
 import com.mitchlustig.bookwishlist.service.Model.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class HomeActivity extends BaseActivity {
+
+    HomeViewModel viewModel;
 
     @BindView(R.id.recycler) RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //ActivityHomeBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
-        setContentView(R.layout.activity_home);
+
+        viewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
+        ActivityHomeBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
+        binding.setViewmodel(viewModel);
+
         ButterKnife.bind(this);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        getService().users().enqueue(new Callback<List<User>>() {
-            @Override
-            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
-                recyclerView.setAdapter(new UserListAdapter(response.body()));
-            }
-
-            @Override
-            public void onFailure(Call<List<User>> call, Throwable t) {
-
-            }
+        recyclerView.setAdapter(new UserListAdapter());
+        viewModel.users().observe(this, users -> {
+            ((UserListAdapter)recyclerView.getAdapter()).update(users);
         });
-    }
 
-    public void viewAllBooks(View v) {
-        Router.allBooks(this);
+        viewModel.setService(getService());
     }
 
     private class UserListAdapter extends RecyclerView.Adapter <UserListAdapter.UserListItemHolder> {
         List<User> users;
-        public UserListAdapter(List<User> users){
-            this.users = users;
+
+        public UserListAdapter(){
+            this.users = new ArrayList<>();
         }
-         class UserListItemHolder extends RecyclerView.ViewHolder {
+
+        public void update(List<User> users){
+            this.users = users;
+            notifyDataSetChanged();
+        }
+        class UserListItemHolder extends RecyclerView.ViewHolder {
 
             // each data item is just a string in this case
             private final ViewDataBinding binding;

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
+        <import type="com.mitchlustig.bookwishlist.Router" />
         <variable name="user" type="com.mitchlustig.bookwishlist.service.Model.User"/>
     </data>
     <TextView
@@ -12,5 +13,6 @@
         android:paddingLeft="80sp"
         android:paddingRight="80sp"
         android:paddingTop="20sp"
-        android:paddingBottom="20sp"/>
+        android:paddingBottom="20sp"
+        android:onClick="@{(view) -> Router.wishlist(view.getContext(), user.getId())}"/>
 </layout>

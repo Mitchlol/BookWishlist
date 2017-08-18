@@ -1,5 +1,7 @@
 package com.mitchlustig.bookwishlist.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +18,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class BookActivity extends BaseActivity {
-    ActivityBookBinding binding;
+
+    private static final String EXTRA_BOOK_ID = "EXTRA_BOOK_ID";
+
+    private ActivityBookBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +31,13 @@ public class BookActivity extends BaseActivity {
         getService().books().enqueue(new Callback<List<Book>>() {
             @Override
             public void onResponse(Call<List<Book>> call, Response<List<Book>> response) {
-                binding.setBook(response.body().get(0));
+                int bookId = getIntent().getIntExtra(EXTRA_BOOK_ID, -1);
+                for(Book book: response.body()){
+                    if(book.getId() == bookId){
+                        binding.setBook(book);
+                        break;
+                    }
+                }
             }
 
             @Override
@@ -37,6 +49,12 @@ public class BookActivity extends BaseActivity {
 
     public void home(View v) {
         Router.home(this);
+    }
+
+    public static Intent getIntent(Context context, int bookId){
+        Intent intent = new Intent(context, BookActivity.class);
+        intent.putExtra(EXTRA_BOOK_ID, bookId);
+        return intent;
     }
 
 }
