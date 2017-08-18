@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <import type="com.mitchlustig.bookwishlist.Router"/>
+        <variable name="viewmodel" type="com.mitchlustig.bookwishlist.activity.booklist.WishlistViewModel"/>
     </data>
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,7 +13,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/allbooks"
+            android:text="@{viewmodel.getFirstName() + `'s ` + @string/books}"
             android:textColor="@color/blue"
             android:gravity="center"
             android:textSize="50sp"

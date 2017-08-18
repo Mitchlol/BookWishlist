@@ -14,5 +14,5 @@
         android:paddingRight="80sp"
         android:paddingTop="20sp"
         android:paddingBottom="20sp"
-        android:onClick="@{(view) -> Router.wishlist(view.getContext(), user.getId())}"/>
+        android:onClick="@{(view) -> Router.wishlist(view.getContext(), user.getId(), user.getFirstName())}"/>
 </layout>

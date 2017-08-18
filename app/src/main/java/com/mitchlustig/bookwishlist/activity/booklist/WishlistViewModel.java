@@ -4,6 +4,7 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableBoolean;
+import android.databinding.ObservableField;
 
 import com.mitchlustig.bookwishlist.service.Model.Book;
 import com.mitchlustig.bookwishlist.service.Model.Wish;
@@ -21,15 +22,17 @@ public class WishlistViewModel extends ViewModel {
     
     private WishlistService service;
     private int userId;
+    private ObservableField<String> firstName = new ObservableField();
     private List<Wish> wishes;
     private List<Book> allBooks;
     private final MutableLiveData<List<Book>> books = new MutableLiveData<>();
     private final ObservableBoolean loading = new ObservableBoolean(false);
 
 
-    public void init(WishlistService service, int userId){
+    public void init(WishlistService service, int userId, String firstName){
         this.service = service;
         this.userId = userId;
+        this.firstName.set(firstName);
         load();
     }
     
@@ -39,6 +42,10 @@ public class WishlistViewModel extends ViewModel {
 
     public ObservableBoolean isLoading() {
         return loading;
+    }
+
+    public ObservableField<String> getFirstName() {
+        return firstName;
     }
 
     private void load() {

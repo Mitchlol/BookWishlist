@@ -20,7 +20,7 @@ public class Router {
         context.startActivity(BookActivity.getIntent(context, bookId));
     }
 
-    public static void wishlist(Context context, int userId){
-        context.startActivity(WishlistActivity.getIntent(context, userId));
+    public static void wishlist(Context context, int userId, String firstName){
+        context.startActivity(WishlistActivity.getIntent(context, userId, firstName));
     }
 }
