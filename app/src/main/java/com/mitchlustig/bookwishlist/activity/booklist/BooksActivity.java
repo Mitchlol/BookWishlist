@@ -1,5 +1,6 @@
 package com.mitchlustig.bookwishlist.activity.booklist;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -9,15 +10,10 @@ import android.support.v7.widget.RecyclerView;
 
 import com.mitchlustig.bookwishlist.R;
 import com.mitchlustig.bookwishlist.activity.BaseActivity;
-import com.mitchlustig.bookwishlist.service.Model.Book;
-
-import java.util.List;
+import com.mitchlustig.bookwishlist.databinding.ActivityBooklistBinding;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class BooksActivity extends BaseActivity {
 
@@ -26,20 +22,17 @@ public class BooksActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        DataBindingUtil.setContentView(this, R.layout.activity_booklist);
+        ActivityBooklistBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_booklist);
         ButterKnife.bind(this);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        getService().books().enqueue(new Callback<List<Book>>() {
-            @Override
-            public void onResponse(Call<List<Book>> call, Response<List<Book>> response) {
-                recyclerView.setAdapter(new BookListAdapter(response.body()));
-            }
 
-            @Override
-            public void onFailure(Call<List<Book>> call, Throwable t) {
-
-            }
+        BooksViewModel viewModel = ViewModelProviders.of(this).get(BooksViewModel.class);
+        viewModel.books().observe(this, books -> {
+            recyclerView.setAdapter(new BookListAdapter(books));
         });
+
+        viewModel.init(getService());
     }
 
     public static Intent getIntent(Context context){
