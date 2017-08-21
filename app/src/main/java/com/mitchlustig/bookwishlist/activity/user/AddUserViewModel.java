@@ -3,14 +3,9 @@ package com.mitchlustig.bookwishlist.activity.user;
 import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
-import android.text.Html;
-import android.text.Spanned;
 
-import com.mitchlustig.bookwishlist.service.Model.Book;
 import com.mitchlustig.bookwishlist.service.Model.User;
 import com.mitchlustig.bookwishlist.service.WishlistService;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -47,7 +42,7 @@ public class AddUserViewModel extends ViewModel {
     }
 
     public void submit() {
-        if(service != null && firstName.get() != null && lastName != null && email != null){
+        if(service != null && firstName.get() != null && lastName.get() != null && email.get() != null){
             loading.set(true);
             service.addUser(new User(firstName.get(), lastName.get(), email.get())).enqueue(new Callback<User>() {
                 @Override

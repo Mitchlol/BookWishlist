@@ -39,19 +39,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/firstname"
-                android:text="@{viewmodel.getFirstName()}"/>
+                android:text="@={viewmodel.getFirstName()}"/>
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/lastname"
-                android:text="@{viewmodel.getLastName()}"/>
+                android:text="@={viewmodel.getLastName()}"/>
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/email"
-                android:text="@{viewmodel.getEmail()}"/>
+                android:text="@={viewmodel.getEmail()}"/>
         </LinearLayout>
 
         <Button
